@@ -1,4 +1,4 @@
-name: single-cell-spring2026
+name: lab3-analysis
 channels:
   - conda-forge
   - bioconda
@@ -6,6 +6,7 @@ channels:
 dependencies:
   - python=3.11
   - jupyter
+  - jupyterlab
   - numpy
   - pandas
   - matplotlib
@@ -14,4 +15,4 @@ dependencies:
   - scipy
   - scanpy
   - anndata
-  - bioconda:umi_tools
+

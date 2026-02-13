@@ -1,4 +1,4 @@
-name: single-cell-spring2026
+name: lab1-scrna-preprocessing
 channels:
   - conda-forge
   - bioconda
@@ -6,6 +6,7 @@ channels:
 dependencies:
   - python=3.11
   - jupyter
+  - jupyterlab
   - numpy
   - pandas
   - matplotlib
@@ -15,3 +16,4 @@ dependencies:
   - scanpy
   - anndata
   - bioconda:umi_tools
+

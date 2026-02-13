@@ -1,0 +1,65 @@
+---
+title: "Lab 4: Single-Cell Analysis in R"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cosmo
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+## Introduction
+
+This RMarkdown document provides a template for single-cell analysis in R using Bioconductor packages.
+
+## Load Libraries
+
+```{r load-libraries}
+library(tidyverse)
+library(ggplot2)
+library(SingleCellExperiment)
+library(scater)
+library(scran)
+```
+
+## Section 1: Data Loading
+
+Replace this section with instructions for loading your single-cell data.
+
+```{r load-data}
+# Example: Load data
+# sce <- read10X("path/to/data")
+# Or use Bioconductor data packages
+```
+
+## Section 2: Quality Control
+
+Perform initial quality control on the single-cell data.
+
+```{r qc}
+# QC metrics calculation would go here
+# is.mito <- grepl("^MT-", rownames(sce))
+# sce <- addPerCellQC(sce, subsets=list(Mito=is.mito))
+```
+
+## Section 3: Visualization
+
+Create visualizations of your results.
+
+```{r visualize}
+# Visualization code would go here
+# plotColData(sce, y="nCount_RNA")
+```
+
+## Session Info
+
+```{r session-info}
+sessionInfo()
+```
+

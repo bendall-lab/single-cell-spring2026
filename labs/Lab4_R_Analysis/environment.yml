@@ -1,0 +1,19 @@
+name: lab4-r-analysis
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - r-base=4.3
+  - r-rstudio
+  - r-tidyverse
+  - r-ggplot2
+  - r-dplyr
+  - r-tidyr
+  - r-rmarkdown
+  - r-knitr
+  - bioconda:bioconductor-singlecellexperiment
+  - bioconda:bioconductor-scater
+  - bioconda:bioconductor-scran
+  - bioconda:bioconductor-edger
+
