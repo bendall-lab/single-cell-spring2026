@@ -8,7 +8,7 @@ This course covers computational methods for analyzing single-cell and spatial t
 
 ## Labs
 
-- **Lab 1**: scRNA-seq Data Preprocessing (Python/Jupyter)
+- [**Lab 1**: scRNA-seq Data Preprocessing (Python/Jupyter)](labs/Lab1_scRNA-seq_Preprocessing/README.md)
 - **Lab 2**: (Coming Soon - Python/Jupyter)
 - **Lab 3**: (Coming Soon - Python/Jupyter)
 - **Lab 4**: Single-Cell Analysis in R (R/RMarkdown/RStudio)

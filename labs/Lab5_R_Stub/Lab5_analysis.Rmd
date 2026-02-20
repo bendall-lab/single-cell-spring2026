@@ -1,0 +1,27 @@
+---
+title: "Lab 5: R and RMarkdown Stub"
+output: html_document
+---
+
+## Overview
+
+This is a starter RMarkdown for RStudio. Activate the `lab5-r-stub` conda environment before opening in RStudio so it uses the environment's R.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Exercise
+
+1. Load the `SingleCellExperiment` package and inspect a small example dataset.
+
+```{r}
+library(SingleCellExperiment)
+# Example: create a tiny SingleCellExperiment
+counts <- matrix(rpois(200, lambda=5), ncol=10)
+colnames(counts) <- paste0("Cell", 1:10)
+rownames(counts) <- paste0("Gene", 1:20)
+ sce <- SingleCellExperiment::SingleCellExperiment(assays = list(counts = counts))
+ sce
+```
+

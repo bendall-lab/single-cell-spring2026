@@ -14,4 +14,4 @@ dependencies:
   - scipy
   - scanpy
   - anndata
-  - bioconda:umi_tools
+  - bioconda::umi_tools

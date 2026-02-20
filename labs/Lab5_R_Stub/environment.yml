@@ -1,0 +1,16 @@
+name: lab5-r-stub
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - r-base=4.3
+  - r-rstudio
+  - r-tidyverse
+  - r-rmarkdown
+  - r-knitr
+  - r-irkernel
+  - bioconda:bioconductor-singlecellexperiment
+  - bioconda:bioconductor-scater
+  - bioconda:bioconductor-scran
+
