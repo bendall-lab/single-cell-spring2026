@@ -17,8 +17,21 @@ This course covers computational methods for analyzing single-cell and spatial t
 
 ### Prerequisites
 
-- macOS with [Mamba](https://mamba.readthedocs.io/) or Conda installed
+- Linux or macOS with [Mamba](https://mamba.readthedocs.io/) or Conda installed
+    - [Installing Mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html)
 - Git
+
+### Cloning the Repository
+
+```bash
+git clone https://github.com/bendall-lab/single-cell-spring2026.git
+```
+
+When there are updates, you will need to run:
+
+```bash
+git pull origin main
+```
 
 ### Environment Setup
 
