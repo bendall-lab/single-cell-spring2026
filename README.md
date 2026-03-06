@@ -35,40 +35,32 @@ git pull origin main
 
 ### Environment Setup
 
-Each lab has its own dedicated conda/mamba environment to ensure isolated dependencies and reproducibility. To get started:
+Each lab has its own dedicated conda/mamba environment to ensure isolated dependencies 
+and reproducibility.
 
-**For Lab 1 - scRNA-seq Data Preprocessing:**
+### Obtaining Data
+
+Some of the datasets used in the labs are too large to be included in the repository,
+so I have provided the commands needed to download any data within the exercises.
+However, realizing that you may not want all these large files on your local machine, I
+have also downloaded all the data to a shared directory on the GW HPC cluster. 
+
+If you want to download the data yourself, either on your local machine or on the 
+HPC cluster, create a data directory and run the `setup_data.sh` script from within this
+directory:
+
 ```bash
-cd labs/Lab1_scRNA-seq_Preprocessing
-mamba env create -f environment.yml
-mamba activate lab1-scrna-preprocessing
-jupyter notebook Lab1_scRNA-seq_Preprocessing.ipynb
+mkdir -p data
+( cd data &&  . ../setup_data.sh )
 ```
 
-**For Lab 2:**
+Expect the download to take as little as 30 minutes if you have a fast connection speed to several hours on a slower connection.
+
+If you are running on the HPC cluster, you can skip the above step and simply create a symbolic link to the shared data directory:
+
 ```bash
-cd labs/Lab2_Stub
-mamba env create -f environment.yml
-mamba activate lab2-analysis
-jupyter notebook Lab2_analysis.ipynb
-```
+ln -s /GWSPH/groups/genomicsgrp/PUBH6899_10_spring2026 data
+````
 
-**For Lab 3:**
-```bash
-cd labs/Lab3_Stub
-mamba env create -f environment.yml
-mamba activate lab3-analysis
-jupyter notebook Lab3_analysis.ipynb
-```
 
-**For Lab 4 - Single-Cell Analysis in R:**
-```bash
-cd labs/Lab4_R_Analysis
-mamba env create -f environment.yml
-mamba activate lab4-r-analysis
-rstudio Lab4_analysis.Rmd
-```
 
-Alternatively, activate the environment and open RStudio from your system menu - it will use the R and packages from the active conda environment.
-
-**Note:** You can use either `conda` or `mamba` for environment management. `mamba` is recommended for faster dependency resolution.
