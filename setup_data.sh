@@ -32,7 +32,7 @@ if [[ ! -d refdata-gex-GRCh38-2024-A ]]; then
   tar -xzf refdata-gex-GRCh38-2024-A.tar.gz
 fi
 
-# 10x 500 PBMC 3' Chromium
+# 10x 500 PBMC 3' Chromium Input
 if [[ ! -e 500_PBMC_3p_LT_Chromium_X_fastqs/500_PBMC_3p_LT_Chromium_X_S4_L003_R1_001.fastq.gz ]]; then
     # Download the dataset if it doesn't already exist
     if [[ ! -e 500_PBMC_3p_LT_Chromium_X_fastqs.tar ]]; then
@@ -44,3 +44,33 @@ if [[ ! -e 500_PBMC_3p_LT_Chromium_X_fastqs/500_PBMC_3p_LT_Chromium_X_S4_L003_R1
     tar -xvf 500_PBMC_3p_LT_Chromium_X_fastqs.tar
 fi
 
+# 10x 500 PBMC 3' Chromium v3.1 Output
+urls=$(cat <<EOF
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_possorted_genome_bam.bam
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_possorted_genome_bam.bam.bai
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_molecule_info.h5
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_filtered_feature_bc_matrix.h5
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_filtered_feature_bc_matrix.tar.gz
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_raw_feature_bc_matrix.h5
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_raw_feature_bc_matrix.tar.gz
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_analysis.tar.gz
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_metrics_summary.csv
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_web_summary.html
+https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_cloupe.cloupe
+EOF
+)
+
+mkdir -p 500_PBMC_3p_LT_Chromium_X_output
+(
+    cd 500_PBMC_3p_LT_Chromium_X_output
+
+    for url in $urls; do
+        filename=$(basename "$url")
+        if [[ ! -e $filename ]]; then
+            echo "Downloading $filename..."
+            curl -O $url
+        else
+            echo "$filename already exists, skipping download."
+        fi
+    done
+)
