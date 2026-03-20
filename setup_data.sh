@@ -118,3 +118,22 @@ mkdir -p 500_PBMC_3p_LT_Chromium_X_output
         fi
     done
 )
+
+# Prebuilt STAR reference from 10x
+# Downloading requires awscli and configuration of AWS
+# Setup:
+# mamba create -n awscli awscli
+# mamba activate
+# aws configure --profile bendall
+
+if [[ ! -e 10x_gex-GRCh38-2024-A/genomeParameters.txt ]]; then
+    if [[ ! -e 10x_gex-GRCh38-2024-A.STAR_2.7.11b.zip ]]; then
+        mamba activate awscli
+        aws s3 cp --profile bendall s3://nixonlab-references/indexes/10x_gex-GRCh38-2024-A.STAR_2.7.11b.zip .
+        mamba deactivate
+        ## mamba run -n awscli "aws s3 cp --profile bendall s3://nixonlab-references/indexes/10x_gex-GRCh38-2024-A.STAR_2.7.11b.zip ."
+    fi
+    unzip 10x_gex-GRCh38-2024-A.STAR_2.7.11b.zip
+fi
+
+

@@ -25,3 +25,7 @@ venv/
 data/*
 !data/.gitkeep
 
+slurm*.out
+data
+labs/Lab2_scGEX_count/run_count_1kpbmcs
+*.mro
