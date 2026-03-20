@@ -32,6 +32,50 @@ if [[ ! -d refdata-gex-GRCh38-2024-A ]]; then
   tar -xzf refdata-gex-GRCh38-2024-A.tar.gz
 fi
 
+### 10x pbmc_1k_v3
+# Input Files
+if [[ ! -e pbmc_1k_v3_fastqs/pbmc_1k_v3_S1_L001_R1_001.fastq.gz ]]; then
+    # Download the dataset if it doesn't already exist
+    if [[ ! -e pbmc_1k_v3_fastqs.tar ]]; then
+        echo "Downloading 10x Genomics pbmc_1k_v3..."
+        curl -O https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_fastqs.tar
+    fi
+    # Check the integrity of the downloaded file using the provided MD5 checksum
+    echo "265ebe8f77ad90db350984d9c7a59e52  pbmc_1k_v3_fastqs.tar" | md5sum -c -
+    tar -xf pbmc_1k_v3_fastqs.tar
+fi
+
+# Output Files
+urls=$(cat <<EOF
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_possorted_genome_bam.bam
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_possorted_genome_bam.bam.bai
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_molecule_info.h5
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_filtered_feature_bc_matrix.h5
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_filtered_feature_bc_matrix.tar.gz
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_raw_feature_bc_matrix.h5
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_raw_feature_bc_matrix.tar.gz
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_analysis.tar.gz
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_metrics_summary.csv
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_web_summary.html
+https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_cloupe.cloupe
+EOF
+)
+
+mkdir -p pbmc_1k_v3_output
+(
+    cd pbmc_1k_v3_output
+
+    for url in $urls; do
+        filename=$(basename "$url")
+        if [[ ! -e $filename ]]; then
+            echo "Downloading $filename..."
+            curl -O $url
+        else
+            echo "$filename already exists, skipping download."
+        fi
+    done
+)
+
 # 10x 500 PBMC 3' Chromium Input
 if [[ ! -e 500_PBMC_3p_LT_Chromium_X_fastqs/500_PBMC_3p_LT_Chromium_X_S4_L003_R1_001.fastq.gz ]]; then
     # Download the dataset if it doesn't already exist
